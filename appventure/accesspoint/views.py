@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from .forms import SignUpForm, LoginForm
 
@@ -32,7 +31,8 @@ def login_view(request):
                 return redirect('home')
             else:
                 # Return an 'invalid login' error message
-                pass  # You might handle invalid login differently
+                error_message = "Invalid username or password."
+                return render(request, 'login.html', {'form': form, 'error_message': error_message})
     else:
         form = LoginForm()
     return render(request, 'login.html', {'form': form})
