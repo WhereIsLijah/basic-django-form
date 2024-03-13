@@ -9,7 +9,6 @@ class SignUpForm(forms.Form):
     terms_condition = forms.CharField(required=True, widget=forms.CheckboxInput(attrs={'default': True}))
 
 
-
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=150)
     password = forms.CharField(widget=forms.PasswordInput)
