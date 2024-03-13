@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect #for template rendering
 from .forms import SignUpForm, LoginForm #importing from forms.py
 from django.contrib.auth import authenticate, login #import for authentication and loging user in
-
+from django.contrib.auth.decorators import login_required
 #Function based view
 
 def signup_view(request):
@@ -31,11 +31,16 @@ def login_view(request):
         form = LoginForm()
     return render(request, 'login.html', {'form': form})
 
+
+@login_required
 def homepage(request):
-    
+    user = request.user
     context = {
-        name: "firstname",
-        msg : "Welcome to the Homepage"
+        'name': user.email,
+        'msg' : "Welcome to the Homepage"
     }
 
     return render(request, 'home.html', context)
+
+# def index(request):
+#     return redirect('index')

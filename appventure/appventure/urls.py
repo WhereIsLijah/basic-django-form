@@ -1,8 +1,8 @@
 from django.urls import path
-from . import views
+from accesspoint import views
 
 urlpatterns = [
-    path('signup/', views.signup, name='signup'),
+    path('signup/', views.signup_view, name='signup'),
     path('login/', views.login_view, name='login'),
-    path('home/', views.homepage name='home'),
+    path('home/', views.homepage, name='home'),
 ]
