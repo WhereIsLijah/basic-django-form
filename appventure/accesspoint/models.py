@@ -6,5 +6,4 @@ class UserInfo(models.Model):
     email = models.EmailField(max_length=255)
     password = models.CharField(max_length=128)
     password2 = models.CharField(max_length=128)
-
-    
+    terms_condition = models.BooleanField() 

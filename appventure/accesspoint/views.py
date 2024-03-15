@@ -2,13 +2,14 @@ from django.shortcuts import render, redirect #for template rendering
 from .forms import SignUpForm, LoginForm #importing from forms.py
 from django.contrib.auth import authenticate, login #import for authentication and loging user in
 from django.contrib.auth.decorators import login_required
+from .models import UserInfo
 #Function based view
 
 def signup_view(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            form.save()
+            UserInfo = form.save()
             return redirect('login')
     else:
         form = SignUpForm()

@@ -4,16 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
+    <style>
+      /* Your CSS styles here */
+  </style>
 </head>
 <body>
-    <form action="/team_name_url/" method="post">
-        <label for="team_name">Enter name: </label>
-        <input
-          id="team_name"
-          type="text"
-          name="name_field"
-          value="Default name for team." />
-        <input type="submit" value="OK" />
-      </form>
+<form method="post">
+  {% csrf_token %}
+  <h1>login</h1>
+  <div class="form-group">
+    {{ form.username.label_tag }}
+    {{ form.username }}
+  </div>
+  <div class="form-group">
+    {{ form.password.label_tag }}
+    {{ form.password }}
+  </div>
+  <div>
+    <p>Forgot password?</p>
+  </div>
+  <button type="submit">LOGIN</button>
+  <a href="{% url 'signup' %}">Sign up</a>
+</form>
 </body>
 </html>

@@ -4,8 +4,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIGN UP</title>
+    <style>
+        .navbar {
+            background-color: #00ff15;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-title {
+            color: #000000;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form div {
+            margin-bottom: 15px;
+        }
+
+        form label {
+            display: block;
+            font-weight: bold;
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="password"],
+        form input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        form input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        p a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        p a:hover {
+            text-decoration: underline;
+        }
+
+        button {
+            display: block;
+            margin: 0 auto;
+            background-color: rgb(182, 180, 180);
+            padding: 10px 90px; /* Adjust padding as needed */
+            border-radius: 15px 15px;
+        }
+
+         /* Style for radio buttons */
+         form input[type="radio"] {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        /* Style for radio button labels */
+        form label.radio-label {
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="navbar">
+        <div class="navbar-title">
+            BlackBoysCode
+        </div>
+    </div>
+    <h1>Sign Up</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            {{ form.first_name.label_tag }}
+            {{ form.first_name }}
+        </div>
+        <div>
+            {{ form.last_name.label_tag }}
+            {{ form.last_name }}
+        </div>
+        <div>
+            {{ form.email.label_tag }}
+            {{ form.email }}
+        </div>
+        <div>
+            {{ form.password.label_tag }}
+            {{ form.password }}
+        </div>
+        <div>
+            {{ form.password2.label_tag }}
+            {{ form.password2 }}
+        </div>
+        <div>
+            <label class="radio-label">{{ form.terms_condition }} I agree to all terms and conditions</label>
+        </div>
+        <button type="submit">REGISTER</button>
+        <p>Already a member? <a href="{% url 'login' %}">Sign in</a></p>
+    </form>
 </body>
 </html>
